@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
 
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 
 const Navbar = () => {
   const { user, signOutUser, loading } = useContext(AuthContext);
-
+const navigate=useNavigate();
   const handleSignOut = () => {
     signOutUser()
-      .then(() => toast.success("Logged out successfully!"))
+      .then(() => toast.success("Logged out successfully!"), navigate('/'))
       .catch((err) => toast.error(err.message));
   };
 
@@ -19,8 +19,16 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/myprofile">My Profile</NavLink>
+        <NavLink to="/all-books">All Books</NavLink>
       </li>
+      <li>
+        <NavLink to="/add-a-book">Add A Book</NavLink>
+      </li>
+      <li>
+        <NavLink to="/my-books">My Books</NavLink>
+      </li>
+
+
     </>
   );
 

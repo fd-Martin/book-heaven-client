@@ -9,6 +9,10 @@ import AuthProvider from "./Components/Context/AuthProvider.jsx";
 import Login from "./Components/Login/Login.jsx";
 import Home from "./Components/Home/Home.jsx";
 import Register from "./Components/Register/Register.jsx";
+import AddABook from "./Components/AddABook/AddABook.jsx";
+import AllBooks from "./Components/AllBooks/AllBooks.jsx";
+import MyBooks from "./Components/MyBooks/MyBooks.jsx";
+import PrivateRoutes from "./Routes/PrivateRoutes.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +22,18 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/all-books",
+        element: <AllBooks />,
+      },
+      {
+        path: "/add-a-book",
+        element: <PrivateRoutes><AddABook /></PrivateRoutes>,
+      },
+      {
+        path: "/my-books",
+        element: <PrivateRoutes><MyBooks /></PrivateRoutes>,
       },
       {
         path: "/register",
@@ -30,6 +46,10 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
+      // <li>
+      //   <NavLink to="/my-books">My Books</NavLink>
+      // </li>
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
