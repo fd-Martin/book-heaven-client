@@ -90,7 +90,7 @@ const Navbar = () => {
       {/* Navbar End */}
       <div className="navbar-end flex items-center space-x-3">
         {loading ? (
-          // 🔸 Skeleton placeholder while checking auth
+          //  Skeleton placeholder while checking auth
           <div className="flex items-center space-x-2">
             <div className="skeleton w-10 h-10 rounded-full"></div>
             <div className="skeleton w-16 h-6 rounded"></div>
