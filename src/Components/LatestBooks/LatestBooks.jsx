@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-const AllBooks = () => {
+const LatestBooks = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -16,10 +16,11 @@ const AllBooks = () => {
   const handleViewDetails = (id) => {
     navigate(`/book-details/${id}`);
   };
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <p className="text-lg">Loading All books...</p>
+        <p className="text-lg">Loading latest books...</p>
       </div>
     );
   }
@@ -51,4 +52,4 @@ const AllBooks = () => {
   );
 };
 
-export default AllBooks;
+export default LatestBooks;

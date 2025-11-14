@@ -13,6 +13,7 @@ import AddABook from "./Components/AddABook/AddABook.jsx";
 import AllBooks from "./Components/AllBooks/AllBooks.jsx";
 import MyBooks from "./Components/MyBooks/MyBooks.jsx";
 import PrivateRoutes from "./Routes/PrivateRoutes.jsx";
+import BookDetails from "./Components/BookDetails/BookDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/all-books",
         element: <AllBooks />,
+      },
+      {
+        path: "/book-details/:id",
+        element: <PrivateRoutes><BookDetails /></PrivateRoutes>,
       },
       {
         path: "/add-a-book",
