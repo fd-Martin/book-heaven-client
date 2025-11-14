@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import Loader from "../Loader/Loader";
 
 const LatestBooks = () => {
   const [books, setBooks] = useState([]);
@@ -23,9 +24,9 @@ const LatestBooks = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-64">
-        <p className="text-lg text-gray-500 animate-pulse">Loading latest books...</p>
-      </div>
+    <div className="fixed inset-0 flex items-center justify-center bg-base-100 z-50">
+      <Loader />
+    </div>
     );
   }
 

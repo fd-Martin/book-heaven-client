@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Navigate, useLocation } from "react-router";
 import { AuthContext } from "../Components/Context/AuthContext";
+import Loader from "../Components/Loader/Loader";
 
 
 const PrivateRoutes = ({ children }) => {
@@ -9,9 +10,9 @@ const PrivateRoutes = ({ children }) => {
 
   if (loading) {
     return (
-          <div className="flex justify-center items-center h-screen">
-        <span className="loading loading-spinner text-success text-3xl"></span>
-      </div>
+    <div className="fixed inset-0 flex items-center justify-center bg-base-100 z-50">
+      <Loader />
+    </div>
     );
   }
 

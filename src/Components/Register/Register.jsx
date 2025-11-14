@@ -140,6 +140,7 @@ import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { updateProfile } from "firebase/auth";
 import { AuthContext } from "../Context/AuthContext";
+import Loader from "../Loader/Loader";
 
 const Register = () => {
   const { createUser, signInWithGoogle } = useContext(AuthContext);
@@ -202,9 +203,9 @@ const Register = () => {
     <div className="relative">
       {/* Full-screen loading spinner */}
       {loading && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-100 opacity-25">
-          <div className="w-16 h-16 border-4 border-black border-t-transparent rounded-full animate-spin"></div>
-        </div>
+    <div className="fixed inset-0 flex items-center justify-center bg-base-100 z-50">
+      <Loader />
+    </div>
       )}
 
       <div className="card bg-base-100 w-full mx-auto max-w-sm shadow-2xl my-10">

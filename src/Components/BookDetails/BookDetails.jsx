@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
+import Loader from "../Loader/Loader";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -70,8 +71,8 @@ const BookDetails = () => {
 
   if (bookLoading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <span className="loading loading-spinner text-success text-3xl"></span>
+      <div className="fixed inset-0 flex items-center justify-center bg-base-100 z-50">
+        <Loader />
       </div>
     );
   }
@@ -92,23 +93,21 @@ const BookDetails = () => {
             className="w-full h-full object-cover"
             onError={(e) => (e.target.src = "/dummy.jpg")}
           />
-
         </div>
 
-<div className="p-6 space-y-3">
-  <h1 className="text-3xl font-bold">{book.title}</h1>
-  <p className="mt-1">By {book.author}</p>
-  <p className="font-semibold">
-    <span className="font-bold">Genre:</span> {book.genre}
-  </p>
-  <p className="font-semibold">
-    <span className="font-bold">Rating:</span> {book.rating} ⭐
-  </p>
-  {/* Preserve line breaks in summary */}
-{/* <p className="mt-4 max-h-60 overflow-x-auto whitespace-pre-line">{book.summary}</p> */}
-<p className="mt-4 whitespace-pre-line">{book.summary}</p>
-</div>
-
+        <div className="p-6 space-y-3">
+          <h1 className="text-3xl font-bold">{book.title}</h1>
+          <p className="mt-1">By {book.author}</p>
+          <p className="font-semibold">
+            <span className="font-bold">Genre:</span> {book.genre}
+          </p>
+          <p className="font-semibold">
+            <span className="font-bold">Rating:</span> {book.rating} ⭐
+          </p>
+          {/* Preserve line breaks in summary */}
+          {/* <p className="mt-4 max-h-60 overflow-x-auto whitespace-pre-line">{book.summary}</p> */}
+          <p className="mt-4 whitespace-pre-line">{book.summary}</p>
+        </div>
       </div>
 
       {/* Comment Section */}
@@ -135,7 +134,7 @@ const BookDetails = () => {
         {comments.map((c) => (
           <div
             key={c._id || Math.random()}
-            className="flex gap-4 p-4  bg-gray-800 rounded-xl shadow-sm border border-gray-200 border-gray-700 transition-transform transform "
+            className="flex gap-4 p-4  bg-gray-800 rounded-xl shadow-sm border  transition-transform transform "
           >
             <img
               src={c.photoURL}
@@ -154,5 +153,3 @@ const BookDetails = () => {
 };
 
 export default BookDetails;
-
-

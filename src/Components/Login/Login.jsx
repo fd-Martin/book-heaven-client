@@ -153,6 +153,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../Context/AuthContext";
+import Loader from "../Loader/Loader";
 
 const Login = () => {
   const { signInUser, signInWithGoogle, resetPassword } = useContext(AuthContext);
@@ -224,9 +225,9 @@ const Login = () => {
     <div className="relative">
       {/* Full-screen loading spinner */}
       {loading && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-100 opacity-25">
-          <div className="w-16 h-16 border-4 border-black border-t-transparent rounded-full animate-spin"></div>
-        </div>
+    <div className="fixed inset-0 flex items-center justify-center bg-base-100 z-50">
+      <Loader />
+    </div>
       )}
 
       <div className="card bg-base-100 w-full max-w-sm mx-auto shadow-2xl my-12">
