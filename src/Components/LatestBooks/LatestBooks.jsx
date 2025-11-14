@@ -44,6 +44,7 @@ const LatestBooks = () => {
               src={book.coverImage}
               alt={book.title}
               className="w-full h-60 object-cover"
+              onError={(e) => (e.target.src = "/dummy.jpg")}
             />
 
             <div className="p-4 flex flex-col flex-grow">

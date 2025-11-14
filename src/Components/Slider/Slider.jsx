@@ -13,28 +13,27 @@ const slides = [
     id: 1,
     title: "To Kill a Mockingbird",
     text: "Harper Lee's timeless classic exploring themes of justice, morality, and humanity in a racially divided society.",
-     img: "./1984.jpg",
+    img: "./1984.jpg",
   },
   {
     id: 2,
     title: "1984",
     text: "George Orwell's dystopian masterpiece about totalitarianism, surveillance, and the power of truth.",
-     img: "./1984.jpg",
+    img: "./1984.jpg",
   },
   {
     id: 3,
     title: "Pride and Prejudice",
     text: "Jane Austen's enduring novel about love, society, and the challenges of the British class system.",
-     img: "./1984.jpg",
+    img: "./1984.jpg",
   },
   {
     id: 4,
     title: "The Great Gatsby",
     text: "F. Scott Fitzgerald's iconic story of wealth, ambition, and the American Dream in the Roaring Twenties.",
-     img: "./1984.jpg",
+    img: "./1984.jpg",
   },
 ];
-
 
 const Slider = () => {
   const navigate = useNavigate();
@@ -82,7 +81,7 @@ const Slider = () => {
                   </button>
 
                   <button
-                    onClick={() => navigate("/create-book")}
+                    onClick={() => navigate("/add-a-book")}
                     className="px-6 py-3 bg-blue-600 hover:bg-blue-700 transition rounded-full font-semibold shadow-lg"
                   >
                     Create Book
