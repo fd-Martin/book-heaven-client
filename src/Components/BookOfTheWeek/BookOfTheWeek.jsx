@@ -10,37 +10,41 @@ const BookOfTheWeek = () => {
       "A timeless novel exploring themes of morality, justice, and humanity in a racially divided society. A must-read for every book lover.",
     coverImage: "./week.jpg",
   };
-  const buttonStyle =
-    "mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold shadow-lg transition";
 
   return (
-    <>
-            <h2 className="text-3xl font-bold mb-2 text-center">
-          Book of the Week
-        </h2>
-    <div className="rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row items-center p-6 gap-6 my-6 transform transition duration-300 hover:scale-[1.02]">
-        
-      <img
-        src={featuredBook.coverImage}
-        alt={featuredBook.title}
-        className="w-full md:w-48 h-64 object-fit rounded-lg shadow-md"
-      />
-      
-      <div className="flex-1">
+    <div className="max-w-5xl mx-auto p-6">
+      <h2 className="text-3xl font-bold mt-2 mb-6 text-center">
+        Book of the Week
+      </h2>
 
-        <h3 className="text-xl font-semibold mb-2">{featuredBook.title}</h3>
-        <p className=" mb-2">
-          Author: {featuredBook.author} | Genre: {featuredBook.genre}
-        </p>
-        <p className=" mb-4">Rating: {featuredBook.rating}</p>
-        <p className="">{featuredBook.description}</p>
-        <button className={buttonStyle}>Explore Book</button>
+      <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row items-center p-6 gap-6 transform transition duration-300 hover:scale-[1.02]">
+        {/* Book Cover */}
+        <img
+          src={featuredBook.coverImage}
+          alt={featuredBook.title}
+          className="w-full md:w-48 h-64 object-cover rounded-lg shadow-md"
+        />
+
+        {/* Book Details */}
+        <div className="flex-1 flex flex-col justify-between">
+          <div>
+            <h3 className="text-2xl font-semibold mb-2">{featuredBook.title}</h3>
+            <p className="text-gray-700 mb-2">
+              <span className="font-medium">Author:</span> {featuredBook.author} |{" "}
+              <span className="font-medium">Genre:</span> {featuredBook.genre}
+            </p>
+            <p className="text-yellow-600 font-medium mb-4">
+              ⭐ {featuredBook.rating}
+            </p>
+            <p className="text-gray-800 mb-4">{featuredBook.description}</p>
+          </div>
+
+          <button className="self-start mt-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold shadow-lg transition">
+            Explore Book
+          </button>
+        </div>
       </div>
     </div>
-    </>
-
- 
-
   );
 };
 
