@@ -179,7 +179,7 @@ const AllBooks = () => {
             {books.map((book, index) => (
               <tr
                 key={book._id}
-                className="hover:bg-gray-100 transition-colors"
+                className=" transition-colors"
               >
                 <th>{index + 1}</th>
                 <td>
