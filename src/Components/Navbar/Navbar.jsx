@@ -110,7 +110,7 @@ const Navbar = () => {
                     alt="avatar"
                     className="w-10 h-10 rounded-full border cursor-pointer md:hidden"
                   />
-                  <p className=" text-black text-xs font-bold px-2 py-1">
+                  <p className="text-xs font-bold px-2 py-1">
                     {user?.displayName || "User"}
                   </p>
                 </div>
