@@ -36,7 +36,7 @@ const LatestBooks = () => {
           />
           <div className="my-2">
             <h3 className="font-bold text-lg">{book.title}</h3>
-            <p className="text-sm text-gray-600">{book.author}</p>
+            <p className="text-sm text-gray-100">{book.author}</p>
             <p className="text-sm mt-1">{book.genre}</p>
             <p className="text-sm mt-1">Rating: {book.rating}</p>
           </div>

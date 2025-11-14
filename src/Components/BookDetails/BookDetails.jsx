@@ -5,17 +5,30 @@ import { useParams } from "react-router";
 const BookDetails = () => {
   const { id } = useParams();
   const [book, setBook] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [bookLoading, setBookLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/book-details/${id}`).then((res) => {
-      setBook(res.data);
-      setLoading(false);
-    });
+    axios
+      .get(`http://localhost:3000/book-details/${id}`)
+      .then((res) => {
+        setBook(res.data);
+        setBookLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setBookLoading(false);
+      });
   }, [id]);
 
-  if (loading) return <p>Loading book details...</p>;
-  if (!book) return <p>Book not found</p>;
+  if (bookLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-spinner text-success text-3xl"></span>
+      </div>
+    );
+  }
+
+  if (!book) return <p className="text-center mt-8">Book not found</p>;
 
   return (
     <div className="max-w-3xl mx-auto p-4">
