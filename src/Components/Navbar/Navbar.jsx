@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
-
+import { Tooltip } from "react-tooltip";
 const Navbar = () => {
   const { user, signOutUser, loading } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -161,6 +161,7 @@ const Navbar = () => {
         ) : user ? (
           <>
             {/* Profile Avatar */}
+
             <div className="relative group hidden md:block">
               <img
                 src={
@@ -168,11 +169,13 @@ const Navbar = () => {
                   "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
                 }
                 alt="avatar"
-                className="mr-1 w-10 h-10 rounded-full border cursor-pointer hidden md:block"
+                className="mr-1 w-10 h-10 rounded-full border cursor-pointer"
+                data-tooltip-id="avatar-tooltip"
+                data-tooltip-content={user?.displayName || "User"}
+                data-tooltip-place="bottom"
               />
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-all duration-200">
-                {user?.displayName || "User"}
-              </span>
+              {/* Render Tooltip Component */}
+              <Tooltip id="avatar-tooltip" />
             </div>
 
             {/* Logout Button */}
