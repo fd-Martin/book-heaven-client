@@ -1,11 +1,212 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { AuthContext } from "../Context/AuthContext";
 
 const MyBooks = () => {
-    return (
-        <div>
-            <h2>my books table</h2>
+  const { user } = useContext(AuthContext);
+  const [books, setBooks] = useState([]);
+  const [selectedBook, setSelectedBook] = useState(null);
+
+  // Load user books
+  useEffect(() => {
+    if (user?.email) {
+      axios
+        .get(`http://localhost:3000/my-books?email=${user.email}`)
+        .then((res) => {
+          setBooks(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [user]);
+
+  // Delete Book
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This book will be permanently deleted!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Delete",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:3000/delete-book/${id}`)
+          .then((res) => {
+            if (res.data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Book removed successfully", "success");
+              setBooks(books.filter((book) => book._id !== id));
+            }
+          })
+          .catch(() => {
+            Swal.fire("Error!", "Failed to delete the book", "error");
+          });
+      }
+    });
+  };
+
+  // Update Book
+  const handleUpdateSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    const updatedBook = {
+      title: form.title.value,
+      author: form.author.value,
+      genre: form.genre.value,
+      rating: form.rating.value,
+      summary: form.summary.value,
+      coverImage: form.coverImage.value,
+    };
+
+    axios
+      .patch(
+        `http://localhost:3000/update-book/${selectedBook._id}`,
+        updatedBook
+      )
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          Swal.fire("Updated!", "Book updated successfully!", "success");
+
+          // Update UI
+          const newList = books.map((book) =>
+            book._id === selectedBook._id ? { ...book, ...updatedBook } : book
+          );
+          setBooks(newList);
+
+          setSelectedBook(null); // Close modal
+        }
+      })
+      .catch(() => {
+        Swal.fire("Error!", "Failed to update the book", "error");
+      });
+  };
+
+  return (
+    <div className="p-6">
+      <h2 className="text-3xl font-bold mb-4">My Books</h2>
+
+      <table className="table w-full">
+        <thead>
+          <tr>
+            <th>Cover</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Rating</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {books.map((book) => (
+            <tr key={book._id}>
+              <td>
+                <img
+                  src={book.coverImage}
+                  alt="cover"
+                  className="w-16 h-20 object-cover rounded"
+                />
+              </td>
+              <td>{book.title}</td>
+              <td>{book.author}</td>
+              <td>{book.rating}</td>
+              <td>
+                <button
+                  className="btn btn-sm btn-warning mr-2"
+                  onClick={() => setSelectedBook(book)}
+                >
+                  Update
+                </button>
+
+                <button
+                  className="btn btn-sm btn-error"
+                  onClick={() => handleDelete(book._id)}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {/* UPDATE MODAL */}
+      {selectedBook && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <form
+            onSubmit={handleUpdateSubmit}
+            className="bg-white p-6 rounded w-96 shadow-xl"
+          >
+            <h3 className="text-xl font-bold mb-4">Update Book</h3>
+
+            <input
+              type="text"
+              name="title"
+              defaultValue={selectedBook.title}
+              className="input input-bordered w-full mb-2"
+              required
+            />
+
+            <input
+              type="text"
+              name="author"
+              defaultValue={selectedBook.author}
+              className="input input-bordered w-full mb-2"
+              required
+            />
+
+            <input
+              type="text"
+              name="genre"
+              defaultValue={selectedBook.genre}
+              className="input input-bordered w-full mb-2"
+              required
+            />
+
+            <input
+              type="text"
+              name="rating"
+              defaultValue={selectedBook.rating}
+              min="1"
+              max="5"
+              className="input input-bordered w-full mb-2"
+              required
+            />
+
+            <textarea
+              name="summary"
+              defaultValue={selectedBook.summary}
+              className="textarea textarea-bordered w-full mb-2"
+              required
+            ></textarea>
+
+            <input
+              type="text"
+              name="coverImage"
+              defaultValue={selectedBook.coverImage}
+              className="input input-bordered w-full mb-4"
+              required
+            />
+
+            <div className="flex justify-between">
+              <button className="btn btn-primary" type="submit">
+                Save
+              </button>
+              <button
+                className="btn"
+                type="button"
+                onClick={() => setSelectedBook(null)}
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
 export default MyBooks;

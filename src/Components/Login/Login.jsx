@@ -191,7 +191,7 @@ const Login = () => {
       .finally(() => setLoading(false));
   };
 
-  // Google login
+//   Google login
   const handleGoogleSignIn = () => {
     setLoading(true);
     signInWithGoogle()
@@ -202,6 +202,7 @@ const Login = () => {
       .catch((err) => toast.error(err.message))
       .finally(() => setLoading(false));
   };
+
 
   // Reset password
   const handleResetPassword = () => {
