@@ -1,15 +1,21 @@
 import React from "react";
 import LatestBooks from "../LatestBooks/LatestBooks";
+import Slider from "../Slider/Slider";
+import BookOfTheWeek from "../BookOfTheWeek/BookOfTheWeek";
+import AboutTheBookHaven from "../AboutTheBookHeaven/AboutTheBookHeaven";
 
 
 
 const Home = () => {
   return (
     <div>
-      <h2>this is home</h2>
+      <Slider/>
       <LatestBooks/>
+      <BookOfTheWeek/>
+      <AboutTheBookHaven/>
     </div>
   );
 };
 
 export default Home;
+

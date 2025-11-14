@@ -14,14 +14,14 @@ const ThemeToggle = () => {
 
   return (
     <label
-      className="flex cursor-pointer items-center gap-2 transition-all duration-300"
+      className="flex cursor-pointer items-center  transition-all duration-300 p-1 "
       onClick={handleThemeSwitch}
     >
       {/* Sun Icon */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="22"
-        height="22"
+        width="20"
+        height="20"
         viewBox="0 0 24 24"
         fill="none"
         stroke={theme === "light" ? "black" : "#9ca3af"}
@@ -38,13 +38,13 @@ const ThemeToggle = () => {
 
       {/* Toggle */}
       <div
-        className={`relative w-12 h-6 rounded-full transition-colors duration-300 ${
+        className={`relative w-12 sm:w-14 h-6 sm:h-7 rounded-full transition-colors duration-300 ${
           theme === "light" ? "bg-gray-300" : "bg-blue-800"
         }`}
       >
         <div
-          className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow-md transform transition-transform duration-300 ${
-            theme === "light" ? "translate-x-0" : "translate-x-6"
+          className={`absolute top-0.5 left-0.5 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white shadow-md transform transition-transform duration-300 ${
+            theme === "light" ? "translate-x-0" : "translate-x-6 sm:translate-x-7"
           }`}
         />
       </div>
@@ -52,8 +52,8 @@ const ThemeToggle = () => {
       {/* Moon Icon */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="22"
-        height="22"
+        width="20"
+        height="20"
         viewBox="0 0 24 24"
         fill="none"
         stroke={theme === "dark" ? "white" : "#9ca3af"}

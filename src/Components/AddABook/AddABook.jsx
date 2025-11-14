@@ -122,7 +122,7 @@ const AddABook = () => {
               <div className="md:col-span-2">
                 <label className="label">Summary</label>
                 <textarea
-                  className="textarea textarea-bordered w-full"
+                  className="textarea border-2 border-gray-500 rounded-sm w-full py-2 pl-2 focus:border-gray-600 focus:outline-none"
                   {...register("summary", { required: "Summary is required" })}
                 ></textarea>
                 {errors.summary && (
