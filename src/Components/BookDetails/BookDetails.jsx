@@ -85,28 +85,30 @@ const BookDetails = () => {
     <div className="max-w-5xl mx-auto p-6 mt-8 space-y-8">
       {/* Book Card */}
       <div className="  shadow-2xl rounded-xl overflow-hidden border border-gray-200  transition-transform transform  duration-300">
-        <div className="relative w-full h-[450px] overflow-hidden">
+        <div className="w-full h-[450px] overflow-hidden">
           <img
             src={book.coverImage}
             alt={book.title}
-            className="w-full h-full object-cover transition-transform duration-500"
+            className="w-full h-full object-cover"
             onError={(e) => (e.target.src = "/dummy.jpg")}
           />
-          <div className="absolute bottom-0 left-0 w-full  p-4">
-            <h1 className="text-3xl font-bold ">{book.title}</h1>
-            <p className=" mt-1">By {book.author}</p>
-          </div>
+
         </div>
 
-        <div className="p-6 space-y-3">
-          <p className="font-semibold  ">
-            <span className="font-bold">Genre:</span> {book.genre}
-          </p>
-          <p className="font-semibold  ">
-            <span className="font-bold">Rating:</span> {book.rating} ⭐
-          </p>
-          <p className="mt-4   leading-relaxed">{book.summary}</p>
-        </div>
+<div className="p-6 space-y-3">
+  <h1 className="text-3xl font-bold">{book.title}</h1>
+  <p className="mt-1">By {book.author}</p>
+  <p className="font-semibold">
+    <span className="font-bold">Genre:</span> {book.genre}
+  </p>
+  <p className="font-semibold">
+    <span className="font-bold">Rating:</span> {book.rating} ⭐
+  </p>
+  {/* Preserve line breaks in summary */}
+{/* <p className="mt-4 max-h-60 overflow-x-auto whitespace-pre-line">{book.summary}</p> */}
+<p className="mt-4 whitespace-pre-line">{book.summary}</p>
+</div>
+
       </div>
 
       {/* Comment Section */}
@@ -152,3 +154,5 @@ const BookDetails = () => {
 };
 
 export default BookDetails;
+
+

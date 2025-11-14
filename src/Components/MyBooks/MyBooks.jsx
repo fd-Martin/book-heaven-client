@@ -132,7 +132,7 @@ const MyBooks = () => {
         </tbody>
       </table>
 
-      {selectedBook && (
+      {/* {selectedBook && (
         <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
           <form
             onSubmit={handleUpdateSubmit}
@@ -196,6 +196,118 @@ const MyBooks = () => {
               </button>
               <button
                 className="btn"
+                type="button"
+                onClick={() => setSelectedBook(null)}
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      )} */}
+      {selectedBook && (
+        <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
+          <form
+            onSubmit={handleUpdateSubmit}
+            className="p-6 bg-base-100 text-base-content rounded-lg w-96 shadow-2xl transition-all duration-300 space-y-4"
+          >
+            <h3 className="text-xl font-bold mb-4 text-center">Update Book</h3>
+
+            {/* Title */}
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text font-semibold">Title</span>
+              </label>
+              <input
+                type="text"
+                name="title"
+                defaultValue={selectedBook.title}
+                className="input input-bordered w-full"
+                required
+              />
+            </div>
+
+            {/* Author */}
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text font-semibold">Author</span>
+              </label>
+              <input
+                type="text"
+                name="author"
+                defaultValue={selectedBook.author}
+                className="input input-bordered w-full"
+                required
+              />
+            </div>
+
+            {/* Genre */}
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text font-semibold">Genre</span>
+              </label>
+              <input
+                type="text"
+                name="genre"
+                defaultValue={selectedBook.genre}
+                className="input input-bordered w-full"
+                required
+              />
+            </div>
+
+            {/* Rating */}
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text font-semibold">Rating</span>
+              </label>
+              <input
+                type="number"
+                name="rating"
+                defaultValue={selectedBook.rating}
+                min="1"
+                max="5"
+                step="0.1"
+                className="input input-bordered w-full"
+                required
+              />
+            </div>
+
+            {/* Summary */}
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text font-semibold">Summary</span>
+              </label>
+              <textarea
+                name="summary"
+                defaultValue={selectedBook.summary}
+                className="textarea textarea-bordered w-full"
+                required
+              />
+            </div>
+
+            {/* Cover Image */}
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text font-semibold">
+                  Cover Image URL
+                </span>
+              </label>
+              <input
+                type="text"
+                name="coverImage"
+                defaultValue={selectedBook.coverImage}
+                className="input input-bordered w-full"
+                required
+              />
+            </div>
+
+            {/* Buttons */}
+            <div className="flex justify-between mt-4">
+              <button className="btn btn-primary w-1/2 mr-2" type="submit">
+                Save
+              </button>
+              <button
+                className="btn w-1/2 ml-2"
                 type="button"
                 onClick={() => setSelectedBook(null)}
               >
