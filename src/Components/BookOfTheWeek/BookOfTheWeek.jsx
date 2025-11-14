@@ -16,8 +16,7 @@ const BookOfTheWeek = () => {
       <h2 className="text-3xl font-bold mt-2 mb-6 text-center">
         Book of the Week
       </h2>
-
-      <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row items-center p-6 gap-6 transform transition duration-300 hover:scale-[1.02]">
+      <div className=" rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row items-center p-6 gap-6">
         {/* Book Cover */}
         <img
           src={featuredBook.coverImage}
@@ -28,15 +27,17 @@ const BookOfTheWeek = () => {
         {/* Book Details */}
         <div className="flex-1 flex flex-col justify-between">
           <div>
-            <h3 className="text-2xl font-semibold mb-2">{featuredBook.title}</h3>
-            <p className="text-gray-700 mb-2">
-              <span className="font-medium">Author:</span> {featuredBook.author} |{" "}
-              <span className="font-medium">Genre:</span> {featuredBook.genre}
+            <h3 className="text-2xl font-semibold mb-2">
+              {featuredBook.title}
+            </h3>
+            <p className=" mb-2">
+              <span className="font-medium">Author:</span> {featuredBook.author}{" "}
+              | <span className="font-medium">Genre:</span> {featuredBook.genre}
             </p>
             <p className="text-yellow-600 font-medium mb-4">
               ⭐ {featuredBook.rating}
             </p>
-            <p className="text-gray-800 mb-4">{featuredBook.description}</p>
+            <p className=" mb-4">{featuredBook.description}</p>
           </div>
 
           <button className="self-start mt-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold shadow-lg transition">
