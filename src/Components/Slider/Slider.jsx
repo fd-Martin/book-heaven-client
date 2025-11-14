@@ -13,25 +13,25 @@ const slides = [
     id: 1,
     title: "To Kill a Mockingbird",
     text: "Harper Lee's timeless classic exploring themes of justice, morality, and humanity in a racially divided society.",
-    img: "./mockingbird.jpg",
+     img: "./1984.jpg",
   },
   {
     id: 2,
     title: "1984",
     text: "George Orwell's dystopian masterpiece about totalitarianism, surveillance, and the power of truth.",
-    img: "./1984.jpg",
+     img: "./1984.jpg",
   },
   {
     id: 3,
     title: "Pride and Prejudice",
     text: "Jane Austen's enduring novel about love, society, and the challenges of the British class system.",
-    img: "./pride_prejudice.jpg",
+     img: "./1984.jpg",
   },
   {
     id: 4,
     title: "The Great Gatsby",
     text: "F. Scott Fitzgerald's iconic story of wealth, ambition, and the American Dream in the Roaring Twenties.",
-    img: "./gatsby.jpg",
+     img: "./1984.jpg",
   },
 ];
 

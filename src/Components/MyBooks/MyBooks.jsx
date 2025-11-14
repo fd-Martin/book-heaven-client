@@ -132,12 +132,11 @@ const MyBooks = () => {
         </tbody>
       </table>
 
-      {/* UPDATE MODAL */}
       {selectedBook && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
           <form
             onSubmit={handleUpdateSubmit}
-            className="bg-white p-6 rounded w-96 shadow-xl"
+            className="p-6 bg-base-100 text-base-content rounded-lg w-96 shadow-2xl transition-all duration-300"
           >
             <h3 className="text-xl font-bold mb-4">Update Book</h3>
 
@@ -166,11 +165,12 @@ const MyBooks = () => {
             />
 
             <input
-              type="text"
+              type="number"
               name="rating"
               defaultValue={selectedBook.rating}
               min="1"
               max="5"
+              step="0.1"
               className="input input-bordered w-full mb-2"
               required
             />
@@ -180,7 +180,7 @@ const MyBooks = () => {
               defaultValue={selectedBook.summary}
               className="textarea textarea-bordered w-full mb-2"
               required
-            ></textarea>
+            />
 
             <input
               type="text"
