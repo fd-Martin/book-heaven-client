@@ -47,10 +47,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-      // <li>
-      //   <NavLink to="/my-books">My Books</NavLink>
-      // </li>
-
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>

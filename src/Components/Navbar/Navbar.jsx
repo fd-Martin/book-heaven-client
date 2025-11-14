@@ -3,13 +3,14 @@ import toast from "react-hot-toast";
 
 import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 const Navbar = () => {
   const { user, signOutUser, loading } = useContext(AuthContext);
-const navigate=useNavigate();
+  const navigate = useNavigate();
   const handleSignOut = () => {
     signOutUser()
-      .then(() => toast.success("Logged out successfully!"), navigate('/'))
+      .then(() => toast.success("Logged out successfully!"), navigate("/"))
       .catch((err) => toast.error(err.message));
   };
 
@@ -27,8 +28,6 @@ const navigate=useNavigate();
       <li>
         <NavLink to="/my-books">My Books</NavLink>
       </li>
-
-
     </>
   );
 
@@ -61,8 +60,9 @@ const navigate=useNavigate();
             {links}
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className=" avatar">
-                <div className=" mt-1 p-2 ">
-                  <img
+                <div className="  ">{user &&
+                    <>
+                    <img
                     className="w-12 h-12"
                     src={
                       user?.photoURL ||
@@ -71,6 +71,9 @@ const navigate=useNavigate();
                     alt="avatar"
                   />
                   <p className="text-sm">{user?.displayName || "User"}</p>
+                    </>}
+                    
+          
                 </div>
               </label>
             </div>
@@ -97,6 +100,7 @@ const navigate=useNavigate();
       </div>
       {/* Navbar End */}
       <div className="navbar-end flex items-center space-x-3">
+        <ThemeToggle />
         {loading ? (
           //  Skeleton placeholder while checking auth
           <div className="flex items-center space-x-2">
