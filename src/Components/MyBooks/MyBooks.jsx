@@ -15,7 +15,9 @@ const MyBooks = () => {
     if (user?.email) {
       setLoading(true);
       axios
-        .get(`http://localhost:3000/my-books?email=${user.email}`)
+        .get(
+          `https://book-heaver-server.vercel.app/my-books?email=${user.email}`
+        )
         .then((res) => {
           setBooks(res.data);
           setLoading(false);
@@ -40,7 +42,7 @@ const MyBooks = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:3000/delete-book/${id}`)
+          .delete(`https://book-heaver-server.vercel.app/delete-book/${id}`)
           .then((res) => {
             if (res.data.deletedCount > 0) {
               Swal.fire("Deleted!", "Book removed successfully", "success");
@@ -70,7 +72,7 @@ const MyBooks = () => {
 
     axios
       .patch(
-        `http://localhost:3000/update-book/${selectedBook._id}`,
+        `https://book-heaver-server.vercel.app/update-book/${selectedBook._id}`,
         updatedBook
       )
       .then((res) => {
@@ -272,7 +274,9 @@ const MyBooks = () => {
 
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text font-semibold">Cover Image URL</span>
+                <span className="label-text font-semibold">
+                  Cover Image URL
+                </span>
               </label>
               <input
                 type="text"

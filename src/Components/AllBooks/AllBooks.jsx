@@ -10,7 +10,7 @@ const AllBooks = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/all-books")
+      .get("https://book-heaver-server.vercel.app/all-books")
       .then((res) => {
         setBooks(res.data);
         setLoading(false);

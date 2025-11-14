@@ -10,7 +10,7 @@ const LatestBooks = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/latest-books`)
+      .get(`https://book-heaver-server.vercel.app/latest-books`)
       .then((data) => {
         setBooks(data.data);
         setLoading(false);
@@ -24,9 +24,9 @@ const LatestBooks = () => {
 
   if (loading) {
     return (
-    <div className="fixed inset-0 flex items-center justify-center bg-base-100 z-50">
-      <Loader />
-    </div>
+      <div className="fixed inset-0 flex items-center justify-center bg-base-100 z-50">
+        <Loader />
+      </div>
     );
   }
 

@@ -22,7 +22,7 @@ const AddABook = () => {
     };
 
     axios
-      .post("http://localhost:3000/add-book", newBook)
+      .post("https://book-heaver-server.vercel.app/add-book", newBook)
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({

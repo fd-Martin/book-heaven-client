@@ -17,7 +17,7 @@ const BookDetails = () => {
   // Fetch book details
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/book-details/${id}`)
+      .get(`https://book-heaver-server.vercel.app/book-details/${id}`)
       .then((res) => {
         setBook(res.data);
         setBookLoading(false);
@@ -34,7 +34,7 @@ const BookDetails = () => {
 
     const fetchComments = () => {
       axios
-        .get(`http://localhost:3000/comments/${id}`)
+        .get(`https://book-heaver-server.vercel.app/comments/${id}`)
         .then((res) => setComments(res.data))
         .catch((err) => console.log(err));
     };
@@ -61,7 +61,10 @@ const BookDetails = () => {
     };
 
     try {
-      await axios.post("http://localhost:3000/add-comment", commentData);
+      await axios.post(
+        "https://book-heaver-server.vercel.app/add-comment",
+        commentData
+      );
       setNewComment("");
       setComments((prev) => [commentData, ...prev]);
     } catch (err) {
