@@ -14,11 +14,13 @@ import AllBooks from "./Components/AllBooks/AllBooks.jsx";
 import MyBooks from "./Components/MyBooks/MyBooks.jsx";
 import PrivateRoutes from "./Routes/PrivateRoutes.jsx";
 import BookDetails from "./Components/BookDetails/BookDetails.jsx";
+import Errorpage from "./Components/ErrorPage/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement:<Errorpage/>,
     children: [
       {
         index: true,

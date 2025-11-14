@@ -35,7 +35,7 @@ const AllBooks = () => {
       <h2 className="text-2xl font-bold mb-4">All Books</h2>
 
       {/* Responsive Table Wrapper */}
-      <div className="overflow-x-auto w-full">
+      <div className="max-w-5xl mx-auto  w-full">
         <table className="table table-zebra w-full min-w-[600px]">
           <thead>
             <tr>
@@ -58,18 +58,19 @@ const AllBooks = () => {
                   <img
                     src={book.coverImage}
                     alt={book.title}
-                    className="w-12 h-16 sm:w-16 sm:h-20 object-cover rounded"
+                    className="w-12 h-12 sm:w-12 sm:h-12 object-cover rounded"
+                    onError={(e) => (e.target.src = "/dummy.jpg")}
                   />
                 </td>
 
-                <td className="font-medium">{book.title}</td>
+                <td className="font-medium w-1/5">{book.title}</td>
                 <td>{book.author}</td>
                 <td>{book.genre}</td>
                 <td>{book.rating}</td>
 
                 <td>
                   <button
-                    className="btn btn-sm btn-primary"
+                    className="btn btn-sm bg-blue-600 p-2 rounded-md"
                     onClick={() => handleViewDetails(book._id)}
                   >
                     View Details

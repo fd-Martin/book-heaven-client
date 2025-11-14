@@ -86,7 +86,7 @@ const BookDetails = () => {
     <div className="max-w-5xl mx-auto p-6 mt-8 space-y-8">
       {/* Book Card */}
       <div className="  shadow-2xl rounded-xl overflow-hidden border border-gray-200  transition-transform transform  duration-300">
-        <div className="w-full h-[450px] overflow-hidden">
+        <div className="w-fullh-[200px] md:h-[300px] lg:h-[450px] overflow-hidden">
           <img
             src={book.coverImage}
             alt={book.title}
