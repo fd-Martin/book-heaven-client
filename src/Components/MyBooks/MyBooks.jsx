@@ -2,21 +2,28 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Context/AuthContext";
+import Loader from "../Loader/Loader"; // make sure you have your loader component
 
 const MyBooks = () => {
   const { user } = useContext(AuthContext);
   const [books, setBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   // Load user books
   useEffect(() => {
     if (user?.email) {
+      //   setLoading(true);
       axios
         .get(`http://localhost:3000/my-books?email=${user.email}`)
         .then((res) => {
           setBooks(res.data);
+          setLoading(false);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+        });
     }
   }, [user]);
 
@@ -75,7 +82,6 @@ const MyBooks = () => {
             book._id === selectedBook._id ? { ...book, ...updatedBook } : book
           );
           setBooks(newList);
-
           setSelectedBook(null); // Close modal
         }
       })
@@ -84,54 +90,70 @@ const MyBooks = () => {
       });
   };
 
+  if (loading) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-base-100 z-50">
+        <Loader />
+      </div>
+    );
+  }
+
   return (
     <div className="p-6">
       <h2 className="text-3xl font-bold mb-4">My Books</h2>
 
-      <table className="table w-full">
-        <thead>
-          <tr>
-            <th>Cover</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Rating</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {books.map((book) => (
-            <tr key={book._id}>
-              <td>
-                <img
-                  src={book.coverImage}
-                  alt="cover"
-                  className="w-16 h-20 object-cover rounded"
-                />
-              </td>
-              <td>{book.title}</td>
-              <td>{book.author}</td>
-              <td>{book.rating}</td>
-              <td>
-                <button
-                  className="btn btn-sm btn-warning mr-2"
-                  onClick={() => setSelectedBook(book)}
-                >
-                  Update
-                </button>
-
-                <button
-                  className="btn btn-sm btn-error"
-                  onClick={() => handleDelete(book._id)}
-                >
-                  Delete
-                </button>
-              </td>
+      {books.length === 0 ? (
+        <p className="text-center text-lg font-medium mt-10">
+          No books added yet.
+        </p>
+      ) : (
+        <table className="table w-full">
+          <thead>
+            <tr>
+              <th>Cover</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Rating</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
 
+          <tbody>
+            {books.map((book) => (
+              <tr key={book._id}>
+                <td>
+                  <img
+                    src={book.coverImage}
+                    alt="cover"
+                    className="w-16 h-20 object-cover rounded"
+                    onError={(e) => (e.target.src = "/dummy.jpg")}
+                  />
+                </td>
+                <td>{book.title}</td>
+                <td>{book.author}</td>
+                <td>{book.rating}</td>
+                <td>
+                  <button
+                    className="btn btn-sm btn-warning mr-2"
+                    onClick={() => setSelectedBook(book)}
+                  >
+                    Update
+                  </button>
+
+                  <button
+                    className="btn btn-sm btn-error"
+                    onClick={() => handleDelete(book._id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+
+      {/* Update Modal */}
       {selectedBook && (
         <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
           <form

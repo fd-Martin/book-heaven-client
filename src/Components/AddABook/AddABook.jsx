@@ -102,6 +102,7 @@ const AddABook = () => {
                 <label className="label">Rating (1–5)</label>
                 <input
                   type="number"
+                  step={0.1}
                   className=" border-2 border-gray-500 rounded-sm w-full py-2 pl-2 focus:border-gray-600 focus:outline-none"
                   min="1"
                   max="5"
