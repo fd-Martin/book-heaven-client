@@ -10,7 +10,8 @@
 
 //   useEffect(() => {
 //     axios
-//       .get("https://book-heaver-server.vercel.app/all-books")
+//       .get("https://book-heaver-server.vercel.app/api/latest-books
+// /all-books")
 //       .then((res) => {
 //         setBooks(res.data);
 //         setLoading(false);
@@ -135,7 +136,7 @@ const AllBooks = () => {
 
   useEffect(() => {
     axios
-      .get("https://book-heaver-server.vercel.app/all-books")
+      .get("https://book-heaver-server.vercel.app/api/all-books")
       .then((res) => {
         setBooks(res.data);
         setLoading(false);
