@@ -16,7 +16,7 @@ const MyBooks = () => {
       setLoading(true);
       axios
         .get(
-          `https://book-heaver-server.vercel.app/api/my-books?email=${user.email}`
+          `https://book-heaver-server.vercel.app/my-books?email=${user.email}`
         )
         .then((res) => {
           setBooks(res.data);
@@ -42,9 +42,7 @@ const MyBooks = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(
-            `https://book-heaver-server.vercel.app/api/delete-book/${id}`
-          )
+          .delete(`https://book-heaver-server.vercel.app/delete-book/${id}`)
           .then((res) => {
             if (res.data.deletedCount > 0) {
               Swal.fire("Deleted!", "Book removed successfully", "success");
@@ -74,7 +72,7 @@ const MyBooks = () => {
 
     axios
       .patch(
-        `https://book-heaver-server.vercel.app/api/update-book/${selectedBook._id}`,
+        `https://book-heaver-server.vercel.app/update-book/${selectedBook._id}`,
         updatedBook
       )
       .then((res) => {
