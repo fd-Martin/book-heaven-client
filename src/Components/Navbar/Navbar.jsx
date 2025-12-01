@@ -185,7 +185,7 @@ const Navbar = () => {
                   "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
                 }
                 alt="avatar"
-                className="mr-1 w-10 h-10 rounded-full border cursor-pointer"
+                className="mr-1 w-10 h-10 rounded-full border cursor-pointer z-50"
                 data-tooltip-id="avatar-tooltip"
                 data-tooltip-content={user?.displayName || "User"}
                 data-tooltip-place="bottom"

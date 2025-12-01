@@ -146,6 +146,7 @@ const BookDetails = () => {
             <div>
               <p className="font-bold  ">{c.userName}</p>
               <p className=" ">{c.comment}</p>
+
             </div>
           </div>
         ))}
