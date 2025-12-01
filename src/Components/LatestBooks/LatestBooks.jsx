@@ -10,7 +10,7 @@ const LatestBooks = () => {
 
   useEffect(() => {
     axios
-      .get(`https://book-heaver-server.vercel.app/latest-books`)
+      .get(`https://book-heaven-server-mu-weld.vercel.app/latest-books`)
       .then((data) => {
         setBooks(data.data);
         setLoading(false);

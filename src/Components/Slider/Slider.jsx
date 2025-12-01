@@ -13,25 +13,25 @@ const slides = [
     id: 1,
     title: "To Kill a Mockingbird",
     text: "Harper Lee's timeless classic exploring themes of justice, morality, and humanity in a racially divided society.",
-    img: "./1984.jpg",
+    img: "./banner-1.png",
   },
   {
     id: 2,
     title: "1984",
     text: "George Orwell's dystopian masterpiece about totalitarianism, surveillance, and the power of truth.",
-    img: "./1984.jpg",
+    img: "./banner-2.png",
   },
   {
     id: 3,
     title: "Pride and Prejudice",
     text: "Jane Austen's enduring novel about love, society, and the challenges of the British class system.",
-    img: "./1984.jpg",
+    img: "./banner-1.png",
   },
   {
     id: 4,
     title: "The Great Gatsby",
     text: "F. Scott Fitzgerald's iconic story of wealth, ambition, and the American Dream in the Roaring Twenties.",
-    img: "./1984.jpg",
+    img: "./banner-3.png",
   },
 ];
 
@@ -39,7 +39,7 @@ const Slider = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full h-[65vh] md:h-[60vh]">
+    <div className="w-full h-[400px] md:h-[85vh]">
       <Swiper
         modules={[Autoplay, Navigation, Pagination]}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
@@ -59,11 +59,11 @@ const Slider = () => {
               />
 
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/80"></div>
+              <div className="absolute inset-0 bg-linear-to-b from-black/50 to-black/80"></div>
 
               {/* Elegant Animated Banner */}
-              <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-5">
-                <h2 className="text-3xl md:text-5xl font-bold opacity-0 animate-fadeSlideDown">
+              <div className="absolute inset-0 flex flex-col justify-center items-start  text-white px-5 ms-10">
+                <h2 className="text-xl md:text-2xl lg:text-4xl font-bold opacity-0 animate-fadeSlideDown">
                   {slide.title}
                 </h2>
 

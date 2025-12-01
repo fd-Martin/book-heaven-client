@@ -17,7 +17,7 @@ const BookDetails = () => {
   // Fetch book details
   useEffect(() => {
     axios
-      .get(`https://book-heaver-server.vercel.app/book-details/${id}`)
+      .get(`https://book-heaven-server-mu-weld.vercel.app/book-details/${id}`)
       .then((res) => {
         setBook(res.data);
         setBookLoading(false);
@@ -34,7 +34,7 @@ const BookDetails = () => {
 
     const fetchComments = () => {
       axios
-        .get(`https://book-heaver-server.vercel.app/comments/${id}`)
+        .get(`https://book-heaven-server-mu-weld.vercel.app/comments/${id}`)
         .then((res) => setComments(res.data))
         .catch((err) => console.log(err));
     };
@@ -62,7 +62,7 @@ const BookDetails = () => {
 
     try {
       await axios.post(
-        "https://book-heaver-server.vercel.app/add-comment",
+        "https://book-heaven-server-mu-weld.vercel.app/add-comment",
         commentData
       );
       setNewComment("");

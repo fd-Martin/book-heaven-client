@@ -10,7 +10,7 @@
 
 //   useEffect(() => {
 //     axios
-//       .get("https://book-heaver-server.vercel.app/all-books")
+//       .get("https://book-heaven-server-mu-weld.vercel.app/all-books")
 //       .then((res) => {
 //         setBooks(res.data);
 //         setLoading(false);
@@ -135,7 +135,7 @@ const AllBooks = () => {
 
   useEffect(() => {
     axios
-      .get("https://book-heaver-server.vercel.app/all-books")
+      .get("https://book-heaven-server-mu-weld.vercel.app/all-books")
       .then((res) => {
         setBooks(res.data);
         setLoading(false);
@@ -177,10 +177,7 @@ const AllBooks = () => {
           </thead>
           <tbody>
             {books.map((book, index) => (
-              <tr
-                key={book._id}
-                className=" transition-colors"
-              >
+              <tr key={book._id} className=" transition-colors">
                 <th>{index + 1}</th>
                 <td>
                   <img
