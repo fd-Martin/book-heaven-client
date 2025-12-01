@@ -108,7 +108,6 @@ const BookDetails = () => {
             <span className="font-bold">Rating:</span> {book.rating} ⭐
           </p>
           {/* Preserve line breaks in summary */}
-          {/* <p className="mt-4 max-h-60 overflow-x-auto whitespace-pre-line">{book.summary}</p> */}
           <p className="mt-4 whitespace-pre-line">{book.summary}</p>
         </div>
       </div>
