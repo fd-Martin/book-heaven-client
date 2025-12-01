@@ -4,6 +4,8 @@ import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
+
 const Navbar = () => {
   const { user, signOutUser, loading } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -102,7 +104,7 @@ const Navbar = () => {
             {user ? (
               <>
                 {/* Profile Avatar */}
-                <div className="relative group flex items-center">
+                {/* <div className="relative group flex items-center">
                   <img
                     src={
                       user?.photoURL ||
@@ -114,6 +116,20 @@ const Navbar = () => {
                   <p className="text-xs font-bold px-2 py-1">
                     {user?.displayName || "User"}
                   </p>
+                </div> */}
+
+                <div className="relative group hidden md:block">
+                  <img
+                    src={
+                      user?.photoURL ||
+                      "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+                    }
+                    alt="avatar"
+                    className="mr-1 w-10 h-10 rounded-full border cursor-pointer"
+                    data-tooltip-id="avatar-tooltip"
+                    data-tooltip-content={user?.displayName || "User"}
+                    data-tooltip-place="bottom"
+                  />
                 </div>
 
                 {/* Logout Button */}
@@ -191,7 +207,8 @@ const Navbar = () => {
                 data-tooltip-place="bottom"
               />
               {/* Render Tooltip Component */}
-              <Tooltip id="avatar-tooltip" />
+             <Tooltip id="avatar-tooltip" className="z-20" />
+
             </div>
 
             {/* Logout Button */}
