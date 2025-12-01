@@ -71,7 +71,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm md:px-4  lg:px-16 py-2 flex justify-between items-center mx-auto max-w-7xl">
+    <div className="navbar bg-base-100 shadow-sm md:px-4 lg:px-16 py-2 flex justify-between items-center mx-auto max-w-7xl">
       {/* Navbar Start */}
       <div className="navbar-start flex items-center">
         {/* Mobile Dropdown */}
@@ -98,7 +98,10 @@ const Navbar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 space-y-2"
           >
             {links}
-            {user && (
+            {/* {!user && (
+
+            )} */}
+            {user ? (
               <>
                 {/* Profile Avatar */}
                 <div className="relative group flex items-center">
@@ -118,10 +121,25 @@ const Navbar = () => {
                 {/* Logout Button */}
                 <button
                   onClick={handleSignOut}
-                  className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md"
+                  className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md hidden lg:flex"
                 >
                   Logout
                 </button>
+              </>
+            ) : (
+              <>
+                <NavLink
+                  to="/login"
+                  className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md md:hidden"
+                >
+                  Login
+                </NavLink>
+                <NavLink
+                  to="/register"
+                  className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md md:hidden"
+                >
+                  Register
+                </NavLink>
               </>
             )}
           </ul>
@@ -150,7 +168,7 @@ const Navbar = () => {
       </Link>
 
       {/* Navbar End */}
-      <div className="navbar-end flex items-center  space-x-2 md:space-x-3">
+      <div className="navbar-end  items-center  space-x-2 md:space-x-3">
         <ThemeToggle />
 
         {loading ? (
@@ -190,13 +208,13 @@ const Navbar = () => {
           <>
             <NavLink
               to="/login"
-              className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md"
+              className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md hidden md:block"
             >
               Login
             </NavLink>
             <NavLink
               to="/register"
-              className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md"
+              className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md hidden md:block"
             >
               Register
             </NavLink>

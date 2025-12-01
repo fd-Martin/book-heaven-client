@@ -15,6 +15,7 @@ import MyBooks from "./Components/MyBooks/MyBooks.jsx";
 import PrivateRoutes from "./Routes/PrivateRoutes.jsx";
 import BookDetails from "./Components/BookDetails/BookDetails.jsx";
 import Errorpage from "./Components/ErrorPage/ErrorPage.jsx";
+import Loader from "./Components/Loader/Loader.jsx";
 
 const router = createBrowserRouter([
   {
