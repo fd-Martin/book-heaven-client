@@ -25,7 +25,7 @@ import "aos/dist/aos.css";
 const AboutTheBookHaven = () => {
   useEffect(() => {
     AOS.init({
-      duration: 2000,
+      duration: 1500,
     });
   }, []);
 
@@ -35,7 +35,7 @@ const AboutTheBookHaven = () => {
         About The Book Haven
       </h2>
 
-      <p className="text-lg mt-6 px-12 text-center" data-aos="fade-down-left">
+      <p className="text-lg mt-6 px-12 text-center" data-aos="fade-down">
         The Book Haven is a cozy online space for book lovers to explore,
         discover, and share their favorite reads. From classics to modern
         masterpieces, we bring a curated collection to your fingertips. Dive

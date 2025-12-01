@@ -116,9 +116,10 @@ const MyBooks = () => {
         <>
           {/* Desktop Table */}
           <div className="hidden sm:block overflow-x-auto">
-            <table className="table w-full min-w-[600px]">
+            <table className="table w-full min-w-[600px] text-center">
               <thead>
                 <tr>
+                  <th>#</th>
                   <th>Cover</th>
                   <th>Title</th>
                   <th>Author</th>
@@ -127,32 +128,36 @@ const MyBooks = () => {
                 </tr>
               </thead>
               <tbody>
-                {books.map((book) => (
+                {books.map((book, i) => (
                   <tr key={book._id}>
+                    <th>{i + 1}</th>
                     <td>
                       <img
                         src={book.coverImage}
                         alt="cover"
-                        className="w-16 h-20 object-cover rounded"
+                        className="w-16 h-20 object-cover rounded mx-auto"
                         onError={(e) => (e.target.src = "/dummy.jpg")}
                       />
                     </td>
                     <td>{book.title}</td>
                     <td>{book.author}</td>
                     <td>{book.rating}</td>
-                    <td className="flex gap-2">
-                      <button
-                        className="btn btn-sm btn-warning"
-                        onClick={() => setSelectedBook(book)}
-                      >
-                        Update
-                      </button>
-                      <button
-                        className="btn btn-sm btn-error"
-                        onClick={() => handleDelete(book._id)}
-                      >
-                        Delete
-                      </button>
+
+                    <td>
+                      <div className="flex items-center justify-center gap-2">
+                        <button
+                          className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-md shadow-md"
+                          onClick={() => setSelectedBook(book)}
+                        >
+                          Update
+                        </button>
+                        <button
+                          className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-md shadow-md"
+                          onClick={() => handleDelete(book._id)}
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -179,13 +184,13 @@ const MyBooks = () => {
                   <p>Rating: {book.rating}</p>
                   <div className="flex gap-2 mt-2">
                     <button
-                      className="btn btn-sm btn-warning flex-1"
+                      className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-md shadow-md flex-1"
                       onClick={() => setSelectedBook(book)}
                     >
                       Update
                     </button>
                     <button
-                      className="btn btn-sm btn-error flex-1"
+                      className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-md shadow-md flex-1"
                       onClick={() => handleDelete(book._id)}
                     >
                       Delete
@@ -290,11 +295,11 @@ const MyBooks = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-2 mt-4">
-              <button className="btn btn-primary flex-1" type="submit">
+              <button className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-md shadow-md flex-1" type="submit">
                 Save
               </button>
               <button
-                className="btn flex-1"
+                className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-md shadow-md flex-1"
                 type="button"
                 onClick={() => setSelectedBook(null)}
               >

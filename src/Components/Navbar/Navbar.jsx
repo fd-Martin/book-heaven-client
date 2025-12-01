@@ -98,9 +98,7 @@ const Navbar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 space-y-2"
           >
             {links}
-            {/* {!user && (
 
-            )} */}
             {user ? (
               <>
                 {/* Profile Avatar */}
@@ -121,7 +119,7 @@ const Navbar = () => {
                 {/* Logout Button */}
                 <button
                   onClick={handleSignOut}
-                  className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md hidden lg:flex"
+                  className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md"
                 >
                   Logout
                 </button>
@@ -208,13 +206,13 @@ const Navbar = () => {
           <>
             <NavLink
               to="/login"
-              className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md hidden md:block"
+              className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md hidden md:flex"
             >
               Login
             </NavLink>
             <NavLink
               to="/register"
-              className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md hidden md:block"
+              className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md hidden md:flex"
             >
               Register
             </NavLink>

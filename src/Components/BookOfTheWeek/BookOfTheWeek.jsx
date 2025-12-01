@@ -20,7 +20,7 @@ const BookOfTheWeek = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-6" data-aos="fade-up">
+    <div className="max-w-5xl mx-auto p-6">
       <h2
         className="text-3xl font-bold mt-2 mb-6 text-center"
         data-aos="fade-down"
@@ -37,14 +37,10 @@ const BookOfTheWeek = () => {
           src={featuredBook.coverImage}
           alt={featuredBook.title}
           className="w-full md:w-48 h-64 object-cover rounded-lg shadow-md"
-          data-aos="fade-right"
         />
 
         {/* Book Details */}
-        <div
-          className="flex-1 flex flex-col justify-between"
-          data-aos="fade-left"
-        >
+        <div className="flex-1 flex flex-col justify-between">
           <div>
             <h3 className="text-2xl font-semibold mb-2">
               {featuredBook.title}
@@ -59,11 +55,7 @@ const BookOfTheWeek = () => {
             <p className="mb-4">{featuredBook.description}</p>
           </div>
 
-          <button
-            className="self-start mt-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold shadow-lg transition"
-            data-aos="fade-right"
-            data-aos-delay="200"
-          >
+          <button className="self-start mt-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold shadow-lg transition">
             Explore Book
           </button>
         </div>
