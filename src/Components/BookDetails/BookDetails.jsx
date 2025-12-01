@@ -136,12 +136,12 @@ const BookDetails = () => {
         {comments.length === 0 && <p className=" ">No comments yet.</p>}
         {comments.map((c) => (
           <div
-            key={c._id || Math.random()}
-            className="flex gap-4 p-4  bg-gray-800 rounded-xl shadow-sm border  transition-transform transform "
+            key={c._id}
+            className="flex gap-4 p-4 rounded-xl shadow-sm border"
           >
             <img
               src={c.photoURL}
-              className="w-14 h-14 rounded-full object-cover border-2 border-blue-500"
+              className="w-14 h-14 object-cover "
               alt="User"
             />
             <div>
